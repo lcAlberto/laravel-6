@@ -1,0 +1,13 @@
+.card-procriare{
+  z-index: 2;
+  position: absolute;
+  margin-block-start: 30% !important;
+}
+
+.index-card-procriare{
+  z-index: 3;
+  position: absolute;
+  margin-block-start: 30% !important;
+  margin-block-end: auto !important;
+  display: block;
+}
