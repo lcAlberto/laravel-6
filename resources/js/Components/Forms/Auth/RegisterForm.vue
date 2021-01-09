@@ -210,12 +210,12 @@ export default {
       const format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
       let width = 5;
 
-      if (this.password_length > 8 || this.contains_eight_characters) {
+      if (this.password.length > 8 || this.contains_eight_characters) {
         this.contains_eight_characters = true;
         this.progressbarClass = 'bg-danger'
         $('#password-progress').css("width", width + 5 + "%");
       }
-      if (this.password_length > 8 && this.password_length || this.contains_eight_characters) {
+      if (this.password.length > 8 && this.password.length || this.contains_eight_characters) {
         this.progressbarClass = 'bg-warning'
         $('#password-progress').css("width", width + 10 + "%");
       } else {

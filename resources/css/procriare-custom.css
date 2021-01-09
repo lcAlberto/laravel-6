@@ -11,3 +11,18 @@
   margin-block-end: auto !important;
   display: block;
 }
+
+@media (max-width: 766px) {
+  .navbar-ṕrocriare{
+
+  }
+}
+.navbar-ṕrocriare
+{
+  background-color: #000000 !important;
+  z-index: 5 !important;
+  left: 18.5% !important;
+  background-color: rgba(0, 0, 0, 0.01);
+  opacity: 50% !important;
+  box-shadow: 20px 10px 5px rgba(0,0,0,0.2) !important;"
+}

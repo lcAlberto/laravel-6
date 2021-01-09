@@ -45,20 +45,32 @@
       <label for="farmState" class="float-left">Estado:</label>
       <small v-if="errors.state_id" class="float-right badge badge-danger ml-2">{{ errors.state_id }}</small>
       <br>
-      <dynamic-select
-        :options="states"
-        option-value="id"
-        option-text="name"
-        placeholder="Selecione o estado"
-        v-model="state">
-      </dynamic-select>
+      <multiselect
+          v-model="state"
+          :searchable="true"
+          :close-on-select="true"
+          :show-labels="true"
+          label="name"
+          placeholder="Selecione um Estado"
+          :allow-empty="false"
+          :options="states">
+      </multiselect>
+<!--      <dynamic-select-->
+<!--        :options="states"-->
+<!--        option-value="id"-->
+<!--        option-text="name"-->
+<!--        placeholder="Selecione o estado"-->
+<!--        v-model="state">-->
+<!--      </dynamic-select>-->
       <input type="hidden" :value="stateId" name="state_id">
     </div>
   </div>
 </template>
 
 <script>
-import DynamicSelect from 'vue-dynamic-select'
+// import DynamicSelect from 'vue-dynamic-select'
+import Multiselect from 'vue-multiselect'
+Vue.component('multiselect', Multiselect)
 
 export default {
   name: "FarmForm",
@@ -93,24 +105,26 @@ export default {
 
   methods: {
     searchCep() {
-      if (this.cep.length === 9) {
+      if ((this.cep) && (this.cep.length >= 9)) {
         axios.get(`https://viacep.com.br/ws/${this.cep}/json/`)
           .then((response) => {
-            this.cep = response.data.cep
-            this.city = response.data.localidade
+            if(response.statusText === "OK"){
+              this.cep = response.data.cep
+              this.city = response.data.localidade
 
-            if (response.data.uf) {
-              this.state = this.states.find((item) => item.abbr === response.data.uf)
-              this.stateId = this.state.id;
-            }
-          })
+              if (response.data.uf) {
+                this.state = this.states.find((item) => item.abbr === response.data.uf)
+                this.stateId = this.state.id;
+              }
+            }alert('CEP não encontrado!')
+          }).catch((error) => {
+            console.log('CEP não encontrado!')
+        })
       }
     },
 
     setFormData() {
-      // if (!Array.isArray(this.old)) {
       if (this.old) {
-        // this.old = Object.assign({}, this.old);
         this.name = this.old.name;
         this.state = this.old.state;
         this.city = this.old.city;
@@ -123,11 +137,10 @@ export default {
     },
   },
   components: {
-    DynamicSelect
+    // DynamicSelect,
+    Multiselect
   },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

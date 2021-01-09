@@ -20,7 +20,7 @@ class FarmController extends Controller
 {
     public function index(User $user, Farm $farm)
     {
-        dd(current_user());
+        dd(current_user()->farm()->get());
     }
 
     public function create()

@@ -38,7 +38,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'farm_id' => 1,
+            'farm_id' => null,
         ]);
 
 //        $role = Role::create(['name' => UserRolesEnum::ADMIN]);

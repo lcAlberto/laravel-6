@@ -45,9 +45,9 @@
 <script src="{{ mix('js/app.js') }}"></script>
 <script>
   import App from "../../js/Components/App";
-  import DynamicSelect from 'vue-dynamic-select'
+  // import DynamicSelect from 'vue-dynamic-select'
 
   export default {
-    components: {App, DynamicSelect}
+    components: {App}
   }
 </script>

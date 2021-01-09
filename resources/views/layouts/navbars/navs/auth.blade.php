@@ -1,8 +1,7 @@
 <!-- Top navbar -->
 <div class="float-left"></div>
-<nav class="navbar navbar-top col-10 navbar-expand-md navbar-dark position-fixed"
-style="z-index: 5 !important; left: 18.5% !important; background-color: rgba(0,0,0,0.1) !important;
-box-shadow: 20px 10px 5px rgba(0,0,0,0.1) !important;">
+<nav class="navbar navbar-top col-10 col-lg-12 navbar-expand-lg navbar-dark navbar-ṕrocriare position-fixed d-md-block d-none">
+{{--style="background-color: rgba(0,0,0,0.5); box-shadow: 20px 10px 5px rgba(0,0,0,0.2) !important">--}}
     <div class="container-fluid">
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">
