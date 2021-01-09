@@ -23,11 +23,8 @@ Vue.component('register-form', require('./Forms/Auth/RegisterForm').default);
 Vue.component('farm-form', require('./Forms/FarmForm').default);
 Vue.component('user-form', require('./Forms/Users/UsersForm').default);
 
-
 /*Extras*/
 Vue.component('validate-password', require('./Forms/extras/ValidatePassword').default);
-
-Vue.component('editor', require('./Editor').default);
 
 /* Main */
 const app = new Vue(require('./App.vue').default);
