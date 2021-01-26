@@ -80,26 +80,25 @@
           type="password"
           name="password"
           v-model="password"
-          @keyup="strongPassword(password)"
           required
           class="text-dark form-control"
           :class="hasErrors('password')"
           placeholder="Senha">
       </div>
-      <div class="progress">
-        <div
-          class="progress-bar"
-          :class="progressbarClass"
-          role="progressbar"
-          aria-valuenow="60"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          id="password-progress">
-        </div>
-      </div>
+<!--      <div class="progress">-->
+<!--        <div-->
+<!--          class="progress-bar"-->
+<!--          :class="progressbarClass"-->
+<!--          role="progressbar"-->
+<!--          aria-valuenow="60"-->
+<!--          aria-valuemin="0"-->
+<!--          aria-valuemax="100"-->
+<!--          id="password-progress">-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
 
-    <div class="form-group border border" v-if="this.valid_password">
+    <div class="form-group border border">
       <div class="input-group input-group-alternative" :class="hasErrors('password_confirmation')">
         <div class="input-group-prepend">
             <span class="input-group-text">
@@ -142,8 +141,7 @@
     </div>
     <div class="text-center p-0">
       <button type="submit"
-              class="btn btn-block btn-primary mt-4"
-              v-if="formValidate()">
+              class="btn btn-block btn-primary mt-4">
         Criar minha conta!
       </button>
     </div>
@@ -178,14 +176,14 @@ export default {
       confirmPassword: undefined,
       termsCheck: undefined,
 
-      progressbarClass: undefined,
-
-      password_length: undefined,
-      contains_eight_characters: false,
-      contains_number: false,
-      contains_uppercase: false,
-      contains_special_character: false,
-      valid_password: false
+      // progressbarClass: undefined,
+      //
+      // password_length: undefined,
+      // contains_eight_characters: false,
+      // contains_number: false,
+      // contains_uppercase: false,
+      // contains_special_character: false,
+      // valid_password: false
     }
   },
   created() {
@@ -208,49 +206,51 @@ export default {
       return this.errors[field] ? 'text-danger has-error' : '';
     },
 
-    strongPassword(password) {
-      this.password_length = this.password.length;
-      const format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-      let width = 5;
+    // strongPassword(password) {
+    //   if(password && password.length > 0) {
+    //     this.password_length = this.password.length;
+    //     const format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    //     let width = 5;
+    //
+    //     if (this.password.length > 8 || this.contains_eight_characters) {
+    //       this.contains_eight_characters = true;
+    //       this.progressbarClass = 'bg-danger'
+    //       $('#password-progress').css("width", width + 5 + "%");
+    //     }
+    //     if (this.password.length > 8 && this.password.length || this.contains_eight_characters) {
+    //       this.progressbarClass = 'bg-warning'
+    //       $('#password-progress').css("width", width + 10 + "%");
+    //     } else {
+    //       this.contains_eight_characters = false;
+    //       this.progressbarClass = 'bg-danger'
+    //       $('#password-progress').css("width", "5%");
+    //     }
+    //
+    //     this.contains_number = /\d/.test(this.password);
+    //     this.contains_uppercase = /[A-Z]/.test(this.password);
+    //     this.contains_special_character = format.test(this.password);
+    //
+    //     if (this.contains_eight_characters === true &&
+    //       this.contains_special_character === true &&
+    //       this.contains_uppercase === true &&
+    //       this.contains_number === true) {
+    //       this.valid_password = true;
+    //       this.progressbarClass = 'bg-success'
+    //       $('#password-progress').css("width", "100%");
+    //     } else {
+    //       this.valid_password = false;
+    //     }
+    //   }
+    // },
 
-      if (this.password.length > 8 || this.contains_eight_characters) {
-        this.contains_eight_characters = true;
-        this.progressbarClass = 'bg-danger'
-        $('#password-progress').css("width", width + 5 + "%");
-      }
-      if (this.password.length > 8 && this.password.length || this.contains_eight_characters) {
-        this.progressbarClass = 'bg-warning'
-        $('#password-progress').css("width", width + 10 + "%");
-      } else {
-        this.contains_eight_characters = false;
-        this.progressbarClass = 'bg-danger'
-        $('#password-progress').css("width", "5%");
-      }
-
-      this.contains_number = /\d/.test(this.password);
-      this.contains_uppercase = /[A-Z]/.test(this.password);
-      this.contains_special_character = format.test(this.password);
-
-      if (this.contains_eight_characters === true &&
-        this.contains_special_character === true &&
-        this.contains_uppercase === true &&
-        this.contains_number === true) {
-        this.valid_password = true;
-        this.progressbarClass = 'bg-success'
-        $('#password-progress').css("width", "100%");
-      } else {
-        this.valid_password = false;
-      }
-    },
-
-    formValidate() {
-      if (this.valid_password) {
-        if ((this.password === this.confirmPassword)
-          && this.name && this.email && this.phone && this.termsCheck) {
-          return true
-        }
-      }
-    }
+    // formValidate() {
+    //   if (this.valid_password) {
+    //     if ((this.password === this.confirmPassword)
+    //       && this.name && this.email && this.phone && this.termsCheck) {
+    //       return true
+    //     }
+    //   }
+    // }
   },
 
   components: {

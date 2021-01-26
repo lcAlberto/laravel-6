@@ -1,6 +1,7 @@
+<!-- Top navbar -->
 <nav
-    class="navbar navbar-top col-10 col-lg-12 navbar-expand-lg navbar-dark navbar-ṕrocriare position-fixed d-md-block d-none">
-    {{--style="background-color: rgba(0,0,0,0.5); box-shadow: 20px 10px 5px rgba(0,0,0,0.2) !important">--}}
+    class="navbar navbar-top col-lg-12 navbar-expand navbar-dark position-fixed d-md-block d-none"
+    style="background-color: rgba(0,0,0,0.5); box-shadow: 20px 10px 5px rgba(0,0,0,0.2) !important; z-index: 5 !important;">
     <div class="container-fluid">
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">
@@ -8,23 +9,6 @@
         </a>
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
-            <li class="nav-item">
-                <a href="{{ route('medicament.index') }}" class="nav-link">
-                    <i class="fa fa-notes-medical mr-2"></i>
-                    Medicamentos
-                    <span class="badge badge-primary ml-1"> 34 </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa fa-calendar mr-2"></i>Gerar Relatório
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('cio.index') }}" class="nav-link">
-                    <i class="fa fa-venus-mars mr-2"></i>@lang('labels.cios')
-                </a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                    aria-expanded="false">

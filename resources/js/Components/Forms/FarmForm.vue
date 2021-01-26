@@ -46,22 +46,22 @@
       <small v-if="errors.state_id" class="float-right badge badge-danger ml-2">{{ errors.state_id }}</small>
       <br>
       <multiselect
-          v-model="state"
-          :searchable="true"
-          :close-on-select="true"
-          :show-labels="true"
-          label="name"
-          placeholder="Selecione um Estado"
-          :allow-empty="false"
-          :options="states">
+        v-model="state"
+        :searchable="true"
+        :close-on-select="true"
+        :show-labels="true"
+        label="name"
+        placeholder="Selecione um Estado"
+        :allow-empty="false"
+        :options="states">
       </multiselect>
-<!--      <dynamic-select-->
-<!--        :options="states"-->
-<!--        option-value="id"-->
-<!--        option-text="name"-->
-<!--        placeholder="Selecione o estado"-->
-<!--        v-model="state">-->
-<!--      </dynamic-select>-->
+      <!--      <dynamic-select-->
+      <!--        :options="states"-->
+      <!--        option-value="id"-->
+      <!--        option-text="name"-->
+      <!--        placeholder="Selecione o estado"-->
+      <!--        v-model="state">-->
+      <!--      </dynamic-select>-->
       <input type="hidden" :value="stateId" name="state_id">
     </div>
   </div>
@@ -70,12 +70,11 @@
 <script>
 // import DynamicSelect from 'vue-dynamic-select'
 import Multiselect from 'vue-multiselect'
+
 Vue.component('multiselect', Multiselect)
 
 export default {
-  name: "FarmForm",
-
-  props: {
+  name: "FarmForm", props: {
     old: {
       type: Array,
       required: false,
@@ -108,7 +107,7 @@ export default {
       if ((this.cep) && (this.cep.length >= 9)) {
         axios.get(`https://viacep.com.br/ws/${this.cep}/json/`)
           .then((response) => {
-            if(response.statusText === "OK"){
+            if (response.statusText === "OK") {
               this.cep = response.data.cep
               this.city = response.data.localidade
 
@@ -116,9 +115,9 @@ export default {
                 this.state = this.states.find((item) => item.abbr === response.data.uf)
                 this.stateId = this.state.id;
               }
-            }alert('CEP não encontrado!')
+            }
           }).catch((error) => {
-            console.log('CEP não encontrado!')
+          alert('CEP não encontrado!')
         })
       }
     },
@@ -143,4 +142,13 @@ export default {
 }
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style>
+@import "~vue-multiselect/dist/vue-multiselect.min.css";
+.multiselect__option--highlight:after{
+  /*linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;*/
+  background: #5e72e4 !important;
+}
+.multiselect__option--highlight{
+  background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+}
+</style>
