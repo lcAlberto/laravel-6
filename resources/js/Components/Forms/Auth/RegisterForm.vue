@@ -151,7 +151,10 @@
 </template>
 
 <script>
-import DynamicSelect from "vue-dynamic-select";
+// import DynamicSelect from "vue-dynamic-select";
+import Multiselect from 'vue-multiselect'
+
+Vue.component('multiselect', Multiselect)
 
 export default {
   name: "RegisterForm",
@@ -177,7 +180,7 @@ export default {
 
       progressbarClass: undefined,
 
-      password_length: 0,
+      password_length: undefined,
       contains_eight_characters: false,
       contains_number: false,
       contains_uppercase: false,
@@ -251,7 +254,7 @@ export default {
   },
 
   components: {
-    DynamicSelect
+    Multiselect
   },
 }
 </script>
