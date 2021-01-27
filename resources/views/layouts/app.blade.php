@@ -21,7 +21,7 @@
 </head>
 <body class="{{ $class ?? '' }}">
 <div id="app">
-  <!-- <vue-snotify></vue-snotify> -->
+    {{--  <vue-snotify></vue-snotify>--}}
     @auth()
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
@@ -36,18 +36,11 @@
         @include('layouts.navbars.navbar')
         @yield('content')
     </div>
-
-@stack('js')
-
 </div>
+<script src="{{ mix('js/manifest.js') }}"></script>
+<script src="{{ mix('js/vendor.js') }}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
+
 </body>
 </html>
-<script src="{{ mix('js/app.js') }}"></script>
-<script>
-  import App from "../../js/Components/App";
-  // import DynamicSelect from 'vue-dynamic-select'
 
-  export default {
-    components: {App}
-  }
-</script>

@@ -3,8 +3,10 @@ window.Vue = require('vue');
 
 import Snotify, { SnotifyPosition } from 'vue-snotify';
 import Datepicker from 'vuejs-datepicker';
+import Vue from 'vue';
+import VueMask from 'v-mask';
 
-// Import and use Vue Froala lib.
+require('./Components');
 
 Vue.use(Snotify, {
   toast: {
@@ -14,16 +16,12 @@ Vue.use(Snotify, {
   }
 });
 
-import Vue from 'vue'
-import VueMask from 'v-mask'
 Vue.use(VueMask)
 Vue.config.productionTip = false
-require('./Components');
 
 export default {
-  // ...
+  el: '#app',
   components: {
     Datepicker
   }
-  // ...
 }

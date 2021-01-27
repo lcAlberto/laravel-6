@@ -5,7 +5,7 @@
 }
 
 .index-card-procriare{
-  z-index: 3;
+  z-index: 100;
   position: absolute;
   margin-block-start: 30% !important;
   margin-block-end: auto !important;

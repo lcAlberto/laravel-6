@@ -60,10 +60,8 @@
             :class="hasErrors('name')"
             id="userPassword"
             placeholder="Use no mínimo 8 caracteres"
-            @keyup="strongPassword(password)"
-            v-model="password" autofocus>
+            v-model="password">
         </div>
-        <validate-password></validate-password>
         <small class="badge badge-danger text-danger float-right mb-5">
           8 caracteres, letras maúsculas e minúsculas, números e símbolos
         </small>
@@ -100,14 +98,16 @@
             type="file" @change="thumbnailUpload()" ref="file" name="thumbnail" class="custom-file-input"
             id="thumbnail" lang="pt-br">
           <label class="custom-file-label"
-                 for="thumbnail">{{ this.thumbnail ? this.thumbnail.name : "Nenhuma imagem selecionada" }}</label>
+                 for="thumbnail">
+<!--            {{ this.thumbnail ? this.thumbnail.name : "Nenhuma imagem selecionada" }}-->
+          </label>
         </div>
         <small class="badge badge-danger text-danger float-right mt-2">
           Escolha um arquivo de imagem válido no formato jpg, jpeg, gif ou png
         </small>
-        <div v-if="this.thumbnail">
-          <img :src="this.thumbnail" class="img-thumbnail">
-        </div>
+<!--        <div v-if="this.thumbnail">-->
+<!--          <img :src="this.thumbnail" class="img-thumbnail">-->
+<!--        </div>-->
       </div>
     </div>
   </div>
@@ -135,7 +135,6 @@ export default {
       password: undefined,
       confirmPassword: undefined,
       thumbnail: '',
-      termsCheck: undefined,
     }
   },
 
@@ -152,7 +151,6 @@ export default {
         this.password = this.old.password;
         this.confirmPassword = this.old.confirmPassword;
         this.thumbnail = this.old.thumbnail;
-        this.termsCheck = this.old.termsCheck;
       }
     },
 
@@ -167,10 +165,6 @@ export default {
       }
       console.log(this.thumbnail)
     },
-
-    strongPassword(password) {
-      this.$root.$emit('strongpassword', password);
-    }
   },
 }
 </script>

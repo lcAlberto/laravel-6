@@ -55,20 +55,12 @@
         :allow-empty="false"
         :options="states">
       </multiselect>
-      <!--      <dynamic-select-->
-      <!--        :options="states"-->
-      <!--        option-value="id"-->
-      <!--        option-text="name"-->
-      <!--        placeholder="Selecione o estado"-->
-      <!--        v-model="state">-->
-      <!--      </dynamic-select>-->
       <input type="hidden" :value="stateId" name="state_id">
     </div>
   </div>
 </template>
 
 <script>
-// import DynamicSelect from 'vue-dynamic-select'
 import Multiselect from 'vue-multiselect'
 
 Vue.component('multiselect', Multiselect)
@@ -136,7 +128,6 @@ export default {
     },
   },
   components: {
-    // DynamicSelect,
     Multiselect
   },
 }
@@ -145,7 +136,6 @@ export default {
 <style>
 @import "~vue-multiselect/dist/vue-multiselect.min.css";
 .multiselect__option--highlight:after{
-  /*linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;*/
   background: #5e72e4 !important;
 }
 .multiselect__option--highlight{

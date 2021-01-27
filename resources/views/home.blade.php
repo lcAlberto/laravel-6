@@ -41,13 +41,6 @@
                             Ações
                         </div>
                         <div class="card-body">
-                            <editor></editor>
-{{--                            <froala id="edit" :tag="'textarea'" :config="config" v-model="model"></froala>--}}
-{{--                            <editor--}}
-{{--                                name="content"--}}
-{{--                                value="cdvdfvd"--}}
-{{--                                route-image-upload="">--}}
-{{--                            </editor>--}}
                         </div>
                     </div>
                     <div class="card-footer py-4">
