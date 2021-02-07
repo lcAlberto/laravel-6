@@ -26,10 +26,6 @@
                             </div>
                             <div class="card-body">
                                 <div class="col-md-12">
-                                    <div class="col-12">
-{{--                                        @include('layouts.flash-message')--}}
-                                    </div>
-
                                     <div class="d-flex flex-column align-items-center">
                                         <div class="col-12">
                                             <form class="form-horizontal p-0" method="POST" action="{{ route('admin.user.store') }}">
@@ -38,10 +34,6 @@
                                                 :old='@json(old())'
                                                 :errors="{{$errors}}">
                                                 </user-form>
-{{--                                                <register-form--}}
-{{--                                                    :old='@json(old())'--}}
-{{--                                                    :errors="{{$errors}}">--}}
-{{--                                                </register-form>--}}
                                                 <div class="form-group col-sm-12 col-md-6">
                                                     <button class="btn btn-block btn-primary" type="submit">
                                                         <i class="fa fa-check"></i> @lang('links._create')

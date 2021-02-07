@@ -5,16 +5,33 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\User as UserResource;
+use App\Models\Farm;
 use App\Models\User;
+use App\Repositories\FarmRepository;
 use App\Repositories\UserRepository;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    protected $repository;
+    protected $userInfoRepository;
+    protected $planRepository;
+    protected $resource;
+    private $perPage = 15;
+
+    public function __construct()
+    {
+        $this->model = new User();
+        $this->farmModel = new Farm();
+    }
+
     public function index()
     {
         $title = 'User Management';
-        return view('users.index', compact('title'));
+//        $users = $this->farmModel->users();
+        $users = Farm::find(auth()->user()->id)->users;
+
+        return view('users.index', compact('title', 'users'));
     }
 
     public function create()
