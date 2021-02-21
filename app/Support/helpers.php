@@ -207,6 +207,13 @@ if (!function_exists('current_user')) {
     {
         return auth()->user();
     }
+
+    function user_single_name()
+    {
+        $name = explode(" ", auth()->user()->name);
+
+        return $name[0];
+    }
 }
 
 if (!function_exists('apply_params')) {

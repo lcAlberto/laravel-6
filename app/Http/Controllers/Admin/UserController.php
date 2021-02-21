@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\UserRolesEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\User as UserResource;
@@ -9,7 +10,10 @@ use App\Models\Farm;
 use App\Models\User;
 use App\Repositories\FarmRepository;
 use App\Repositories\UserRepository;
+use App\Support\PaginationBuilder;
 use Spatie\Permission\Models\Role;
+use App\Repositories\Criteria\Common\OrderBy;
+use App\Repositories\Criteria\User\UserRole;
 
 class UserController extends Controller
 {
@@ -17,11 +21,12 @@ class UserController extends Controller
     protected $userInfoRepository;
     protected $planRepository;
     protected $resource;
-    private $perPage = 15;
+    private $perPage = 2;
 
     public function __construct()
     {
         $this->model = new User();
+        $this->repository = new UserRepository();
         $this->farmModel = new Farm();
     }
 
@@ -45,26 +50,33 @@ class UserController extends Controller
     public function store(UserRequest $request, UserRepository $repository)
     {
         $data = $request->validated();
-        dd($data);
-        $data = (new UserRepository)->createHash($data);
-        $user = (new UserRepository)->create($data);
+        $data = $repository->createHash($data);
+        $data = $repository->createThumbnail($data);
+        $user = current_user()->farm->users()->create($data);
+
 
         $message = _m('user.success.create');
         $user->assignRole($request->input('roles'));
         return $this->chooseReturn('success', $message, 'admin.user.index');
     }
 
-    public function edit(User $user)
+    public function edit($id)
     {
+        $title = 'Create new user';
+        $description = 'Cadastrar novo usuário na sua fazenda';
         $roles = Role::pluck('name','name')->all();
+
+        $user = $this->repository->find($id);
         $userRole = $user->roles->pluck('name','name')->all();
-        return view('users.edit', compact('user', 'userRole', 'roles'));
+        return view('users.edit', compact('title', 'description', 'user', 'userRole', 'roles'));
     }
 
-    public function update(UserRequest $request, UserRepository $repository, $id)
+    public function update(UserRequest $request, $id)
     {
-        $data = $repository->passwordVerification($request, $id);
-        $user = (new UserRepository())->update($id, $data);
+        $current = User::find($id);
+        $data = $this->repository->passwordVerification($request, $current);
+        $data = $this->repository->vefirfyThumbnail($data, $current);
+        $user = $this->repository->update($id, $data);
 
         $message = _m('user.success.update');
         $user->assignRole($request->input('roles'));
@@ -89,8 +101,10 @@ class UserController extends Controller
 
     public function pagination()
     {
+        $pagination = new PaginationBuilder();
         return pagination()
-            ->repository(UserRepository::class)
-            ->resource(UserResource::class);
+            ->repository($this->repository)
+            ->resource(UserResource::class)
+            ->perPage($this->perPage);
     }
 }

@@ -48,6 +48,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@email.com',
             'password' => Hash::make('123456'),
+            'phone' => '(42)99999-9999',
             'email_verified_at' => '2019-11-23 01:01:01',
         ]);
 

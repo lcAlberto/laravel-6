@@ -16,7 +16,7 @@ class User extends Authenticatable
     ];
 
     protected $fillable = [
-        'name', 'email', 'password', 'thumbnail', 'farm_id'
+        'name', 'email', 'password', 'phone', 'thumbnail', 'farm_id'
     ];
 
     protected static $logAttributes = [

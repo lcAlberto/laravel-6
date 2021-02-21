@@ -52,8 +52,8 @@
                         <div class="table-responsive d-flex">
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
-                                <tr>
-                                    <td>ID</td>
+                                <tr class="text-center">
+                                    <td> <i class="fa fa-eye"></i> Detahes</td>
                                     <td>Nome</td>
                                     <td>Email</td>
                                     <td>Telefone</td>
@@ -63,19 +63,25 @@
                                 </thead>
                                 <tbody class="list">
                                 @foreach($users as $user)
-                                    <tr>
-                                        <td>{{$user->thumbnail}}</td>
+                                    <tr class="text-center">
+                                        <td>
+                                            <a href="#">
+                                                <img
+                                                    src="{{$user->thumbnail ? asset('users/' . $user->thumbnail) : asset('default.jpg')}}"
+                                                    alt="{{$user->name}}"
+                                                    class="img-center rounded-circle" width="80" height="80"
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="Mais detalhes de {{$user->name}}">
+                                            </a>
+                                        </td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{$user->phone}}</td>
-                                        <td>{{$user->created_at}}</td>
+                                        <td>{{$user->phone ?? ' - '}}</td>
+                                        <td>{{format_date($user->created_at, 'd/m/Y')}}</td>
                                         <td>
                                             <div class="btn-group-sm">
-                                                <a class="btn btn-white" href="#">
+                                                <a class="btn btn-white" href="{{ route('admin.user.edit', $user->id) }}">
                                                     <i class="fa fa-pencil-alt text-success"></i>
-                                                </a>
-                                                <a class="btn btn-white" href="#">
-                                                    <i class="fa fa-eye text-primary"></i>
                                                 </a>
                                                 <a class="btn btn-white" href="#">
                                                     <i class="fa fa-eraser text-danger"></i>

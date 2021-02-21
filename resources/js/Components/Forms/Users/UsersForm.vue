@@ -1,6 +1,7 @@
 <template>
   <div style="padding: 0">
     <div class="col-md-6 float-left" style="z-index: 100 !important">
+
       <div class="form-group">
         <label for="userName" class="float-left">Nome: </label>
         <div class="input-group" :class="hasErrors('name')">
@@ -48,6 +49,35 @@
       </div>
 
       <div class="form-group">
+        <label for="userPhone" class="float-left">Telefone: </label>
+        <div class="input-group" :class="hasErrors('phone')">
+          <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-phone"></i>
+          </span>
+          </div>
+          <input
+            type="text"
+            name="phone"
+            v-model="phone"
+            id="userPhone"
+            required
+            class="text-dark form-control"
+            :class="hasErrors('phone')"
+            placeholder="Telefone"
+            v-mask="'(##) ####-####'">
+        </div>
+        <small
+          class="badge badge-danger text-danger float-right mt-2"
+          v-if="hasErrors('phone')">
+          Número de telefone válido!
+        </small>
+      </div>
+    </div>
+
+    <div class="col-md-6 float-right">
+
+      <div class="form-group">
         <label for="userPassword" class="float-left">Senha</label>
         <div class="input-group" :class="hasErrors('password')">
           <div class="input-group-prepend">
@@ -69,9 +99,7 @@
           8 caracteres, letras maúsculas e minúsculas, números e símbolos
         </small>
       </div>
-    </div>
 
-    <div class="col-md-6 float-right">
       <div class="form-group">
         <label for="confirmPassword" class="float-left">Repita a senha para confirmar</label>
         <div class="input-group" :class="hasErrors('password_confirmation')">
@@ -96,12 +124,18 @@
       </div>
 
       <div class="form-group">
-        <label for="thumbnail" class="float-left">Imagem de Perfil</label>
-        <div class="custom-file">
-          <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions"></vue-dropzone>
-<!--          <input-->
-<!--            type="file" @change="thumbnailUpload()" ref="file" name="thumbnail" class="custom-file-input"-->
-<!--            id="thumbnail" lang="pt-br">-->
+        <label for="thumbnail" class="float-left">Imagem de perfil</label>
+        <div class="input-group" :class="hasErrors('thumbnail')">
+          <div class="input-group">
+            <input
+              type="file"
+              name="thumbnail"
+              class="form-control"
+              id="thumbnail">
+            <label class="custom-file-label" for="thumbnail">
+              {{ thumbnail ? thumbnail.name : "Nenhuma imagem" }}
+            </label>
+          </div>
         </div>
         <small
           class="badge badge-danger text-danger float-right mt-2"
@@ -110,12 +144,18 @@
         </small>
       </div>
     </div>
+<!--    <div class="custom-file">-->
+<!--      <vue-dropzone ref="myVueDropzone" id="dropzone" v-model="thumbnail" :options="dropzoneOptions"></vue-dropzone>-->
+<!--    </div>-->
   </div>
 </template>
 
 <script>
-import vue2Dropzone from 'vue2-dropzone';
-import 'vue2-dropzone/dist/vue2Dropzone.min.css';
+// import vue2Dropzone from 'vue2-dropzone';
+// import 'vue2-dropzone/dist/vue2Dropzone.min.css';
+
+import { VueMaskDirective } from 'v-mask'
+Vue.directive('mask', VueMaskDirective);
 
 export default {
   name: "UsersForm",
@@ -126,6 +166,9 @@ export default {
       required: false,
     },
     errors: {
+      required: false,
+    },
+    data:{
       required: false,
     }
   },
@@ -139,26 +182,34 @@ export default {
       confirmPassword: undefined,
       thumbnail: '',
 
-      dropzoneOptions: {
-        url: 'https://httpbin.org/post',
-        method: "post",
-        uploadMultiple: false,
-        maxFiles:1,
-        acceptedFiles: 'image/png,image/gif,image/jpeg,image/webp',
-        thumbnailWidth: 400,
-        maxFilesize: 2,
-        dictDefaultMessage: "<i class='fa fa-upload mr-2'></i>Clique aqui ou arraste sua foto aqui"
-      }
+      // dropzoneOptions: {
+      //   url: 'http://localhost:8000/admin/user',
+      //   method: "post",
+      //   uploadMultiple: false,
+      //   maxFiles:1,
+      //   acceptedFiles: 'image/png,image/gif,image/jpeg,image/webp',
+      //   thumbnailWidth: 400,
+      //   maxFilesize: 2,
+      //   dictDefaultMessage: "<i class='fa fa-upload mr-2'></i>Clique aqui ou arraste sua foto aqui"
+      // }
     }
   },
 
   created() {
     this.setFormData();
+    console.log(this.data)
   },
 
   methods: {
     setFormData() {
-      if (this.old) {
+      if (this.data) {
+        this.name = this.data.name;
+        this.email = this.data.email;
+        this.phone = this.data.phone;
+        this.password = this.data.password;
+        this.confirmPassword = this.data.confirmPassword;
+        this.thumbnail = this.data.thumbnail;
+      }else if (this.old) {
         this.name = this.old.name;
         this.email = this.old.email;
         this.phone = this.old.phone;
@@ -172,7 +223,7 @@ export default {
       return this.errors[field] ? 'text-danger border border-danger' : '';
     },
 
-    thumbnailUpload(e) {
+    thumbnailUpload() {
       let file = this.$refs.file.files[0];
       if (this.file.type() === 'image/jpeg') {
         this.thumbnail = file;
@@ -182,17 +233,18 @@ export default {
   },
 
   components: {
-    vueDropzone: vue2Dropzone
+    // vueDropzone: vue2Dropzone,
+    // VueMask,
   },
 }
 </script>
 
 <style>
-.dz-details{
-  background-color: rgba(0,0,0,0.31) !important;
-}
+/*.dz-details{*/
+/*  background-color: rgba(0,0,0,0.31) !important;*/
+/*}*/
 
-.dz-error-message{
-  background: linear-gradient(to bottom, rgba(0,0,0,0.31), rgba(81, 23, 23, 0.31)) !important;
-}
+/*.dz-error-message{*/
+/*  background: linear-gradient(to bottom, rgba(0,0,0,0.31), rgba(81, 23, 23, 0.31)) !important;*/
+/*}*/
 </style>

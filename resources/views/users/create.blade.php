@@ -28,7 +28,7 @@
                                 <div class="col-md-12">
                                     <div class="d-flex flex-column align-items-center">
                                         <div class="col-12">
-                                            <form class="form-horizontal p-0" method="POST" action="{{ route('admin.user.store') }}">
+                                            <form class="form-horizontal p-0" method="POST" action="{{ route('admin.user.store') }}" enctype="multipart/form-data">
                                                 @csrf
                                                 <user-form
                                                 :old='@json(old())'

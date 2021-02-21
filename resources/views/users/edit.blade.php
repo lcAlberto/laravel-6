@@ -1,45 +1,60 @@
 @extends('layouts.app')
 
-@section('breadcrumb')
-    <breadcrumb header="@lang('headings.users.edit')">
-        <breadcrumb-item href="{{ route('home') }}">
-            @lang('headings._home')
-        </breadcrumb-item>
-        <breadcrumb-item href="{{ route('admin.user.index') }}">
-            @lang('headings._users')
-        </breadcrumb-item>
-
-        <breadcrumb-item active>
-            @lang('headings.users.edit')
-        </breadcrumb-item>
-    </breadcrumb>
-@endsection
-
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <div class="float-lg-left">
-                @lang('headings.users.edit')
-            </div>
-            <div class="float-lg-right">
-                <a href="{{ route('admin.user.index')}}" class="btn btn-primary">
-                    <i class="fa fa-arrow-left mr-2"></i>Voltar
-                </a>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="d-flex flex-column align-items-center">
-                <div class="col-md-8">
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.user.update', $user->id) }}">
-                        @method('PUT')
-                        @include('users.partials._form')
-                        <div class="form-group col-sm-12 col-md-6">
-                            <button class="btn btn-block btn-primary" type="submit">
-                                <i class="fa fa-check mr-1"></i>@lang('links._update')</button>
-                    </form>
+    <layout-header
+        background-img="{{asset('img/cards/user.jpg')}}"
+        description="{{$description}}"
+        title="@lang("labels.$title")"
+        breadcrumb-header="Criar Fazenda"
+        breadcrumb-label="@lang('headings._home')">
+    </layout-header>
+    <div class="container-fluid mt--7 card-procriare">
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center">
+                            <div class="col-sm-12">
+                                <div class="col-md-9 float-left">
+                                    <h3>@lang('headings.users.edit')</h3>
+                                </div>
+                                <div class="col-md-3 float-right">
+                                    <a href="{{URL::previous()}}" class="btn btn-block btn-primary">
+                                        <i class="fa fa-arrow-left mr-2"></i>Voltar
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-md-12">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <div class="col-12">
+                                            <form
+                                                class="form-horizontal p-0"
+                                                method="post"
+                                                action="{{ route('admin.user.update', $user->id) }}"
+                                                enctype="multipart/form-data">
+                                                @method('PUT')
+                                                @csrf
+                                                <user-form
+                                                    :old='@json(old())'
+                                                    :errors="{{$errors}}"
+                                                    :data="{{$user}}">
+                                                </user-form>
+                                                <div class="form-group col-sm-12 col-md-6">
+                                                    <button class="btn btn-block btn-primary" type="submit">
+                                                        <i class="fa fa-check"></i> @lang('links._edit')
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                @include('layouts.footers.auth')
             </div>
         </div>
-    </div>
     </div>
 @endsection

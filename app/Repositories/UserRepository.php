@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use App\Models\Farm;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -11,13 +12,12 @@ class UserRepository extends Repository
         return User::class;
     }
 
-    public function passwordVerification($request, $id)
+    public function passwordVerification($request, $current)
     {
         $data = $request->validated();
-        if(isset($request->validated()->password))
-            return $data;
-        else{
-            $current = User::find($id);
+        if(isset($data['password']))
+            return $this->createHash($data);
+        else {
             $data['password'] = $current['password'];
             return $data;
         }
@@ -27,5 +27,24 @@ class UserRepository extends Repository
     {
         $data['password'] = Hash::make($data['password']);
         return $data;
+    }
+
+    public function createThumbnail($data)
+    {
+        $extension = $data['thumbnail']->getClientOriginalExtension();
+        $data['thumbnail']->storeAs('users/', $data['name'] . '.' . $extension);
+        $data['thumbnail'] = $data['name'] . '.' . $extension;
+        return $data;
+    }
+
+    public function vefirfyThumbnail($data, $current)
+    {
+        if(isset($data['thumbnail'])){
+            return $this->createThumbnail($data);
+        }
+        else {
+            $data['thumbnail'] = $current['thumbnail'];
+            return $data;
+        }
     }
 }

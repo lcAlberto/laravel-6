@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,20 +25,12 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        dd($this->all());
         return [
-            'name' => [
-                'required', 'min:3'
-            ],
-            'email' => [
-                'required', 'email', Rule::unique((new User)->getTable())->ignore($this->route()->user->id ?? null)
-            ],
-            'password' => [
-                $this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6'
-            ],
-            'thumbnail' => [
-                $this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6'
-            ]
+            'name' => 'required|max:255|min:3',
+            'email' => 'email|' . $this->route()->user ? 'nullable' : 'required',
+            'phone' => 'min:6|max:15|nullable',
+            'password' => 'confirmed|min:6' . $this->route()->user ? 'nullable' : 'required',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }

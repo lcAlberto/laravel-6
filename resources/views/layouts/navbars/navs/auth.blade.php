@@ -30,11 +30,13 @@
                    aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                             <img src="{{asset('/thumbnail/madmax.jpg') }}">
+                             <img src="{{asset('users/' . current_user()->thumbnail)}}">
                         </span>
                         <div class="media-body ml-2 d-none d-lg-block">
                             <span
-                                class="mb-0 text-sm  font-weight-bold"> @lang('labels.Hello')! {{ auth()->user()->name }}</span>
+                                class="mb-0 text-sm  font-weight-bold">
+                                @lang('labels.Hello')! {{ user_single_name() }}
+                            </span>
                         </div>
                     </div>
                 </a>

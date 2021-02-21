@@ -70,7 +70,7 @@
                                 <i class="fa fa-arrow-left mr-1"></i> @lang('buttons.Back')</a>
                         </div>
                         <div class="col-md-6 float-right">
-                            <a href="{{ route('books.edit', $user->id) }}" class="btn btn-block btn-success">
+                            <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-block btn-success">
                                 <i class="fa fa-pencil mr-1"></i> @lang('buttons.Edit')</a>
                         </div>
                     </div>
