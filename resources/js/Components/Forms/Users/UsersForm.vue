@@ -181,17 +181,6 @@ export default {
       password: undefined,
       confirmPassword: undefined,
       thumbnail: '',
-
-      // dropzoneOptions: {
-      //   url: 'http://localhost:8000/admin/user',
-      //   method: "post",
-      //   uploadMultiple: false,
-      //   maxFiles:1,
-      //   acceptedFiles: 'image/png,image/gif,image/jpeg,image/webp',
-      //   thumbnailWidth: 400,
-      //   maxFilesize: 2,
-      //   dictDefaultMessage: "<i class='fa fa-upload mr-2'></i>Clique aqui ou arraste sua foto aqui"
-      // }
     }
   },
 
@@ -230,11 +219,6 @@ export default {
       }
       console.log(this.thumbnail)
     },
-  },
-
-  components: {
-    // vueDropzone: vue2Dropzone,
-    // VueMask,
   },
 }
 </script>

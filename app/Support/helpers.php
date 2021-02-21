@@ -214,6 +214,16 @@ if (!function_exists('current_user')) {
 
         return $name[0];
     }
+
+    function isAdmin()
+    {
+        current_user()->hasRole(UserRolesEnum::ADMIN);
+    }
+
+    function isClient()
+    {
+        current_user()->hasRole(UserRolesEnum::CLIENT);
+    }
 }
 
 if (!function_exists('apply_params')) {
