@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\ProfileRequests\ThumbnailRequest;
 use App\Repositories\UserRepository;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -39,14 +39,20 @@ class ProfileController extends Controller
         return back()->withPasswordStatus(__('Password successfully updated.'));
     }
 
-    public function thumbnail(Request $request)
+    public function hash()
     {
-        $data = $request->all();
-        $data = $this->repository->vefirfyThumbnail($data, auth()->user());
-        $user = $this->repository->update(auth()->user()->id, $data);
+        dd('aki');
+
+    }
+
+    public function thumbnail(ThumbnailRequest $request)
+    {
+        $data = $request->validated();
+        dd($data);
+        $data = $this->repository->decodeBase64Thumbnail($data, auth()->user());
+        $user = auth()->user()->update($data);
 
         $message = _m('user.success.update');
-        $user->assignRole($request->input('roles'));
         return back()->withPasswordStatus(__('Thumbnail successfully updated.'));
     }
 }

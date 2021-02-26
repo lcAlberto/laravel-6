@@ -17,7 +17,7 @@
                     :data="{{current_user()}}"
                     farm="{{current_user()->farm->name}}"
                     :role="true"
-                    imgUrl="{{asset('users/' . current_user()->thumbnail)}}">
+                    img-url="{{asset('users/' . current_user()->thumbnail)}}">
                 </user-thumbnail-form>
             </div>
             <div class="col-xl-8 order-xl-1">

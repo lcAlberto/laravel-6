@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile/{id}', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile/{id}', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-    Route::put('profile/thumbnail', ['as' => 'profile.thumbnail', 'uses' => 'ProfileController@thumbnail']);
+    Route::post('profile/thumbnail', ['as' => 'profile.thumbnail', 'uses' => 'ProfileController@thumbnail']);
 });
 
 /* animals // REBANHO */
