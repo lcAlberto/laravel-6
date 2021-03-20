@@ -82,7 +82,8 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        $title = 'Perfil de ' . $user->name;
+        return view('users.show', compact('user','title'));
     }
 
     public function destroy(User $user)

@@ -2,7 +2,7 @@
 
 @section('content')
     <layout-header
-        background-img="{{asset('img/cards/user.jpg')}}"
+        background-img="{{current_user()->thumbnail ? asset('users/' . current_user()->thumbnail) : asset('img/cards/user.jpg')}}"
         description="{{$description ?? ''}}"
         title="@lang("labels.$title")"
         breadcrumb-header="Criar Fazenda"

@@ -65,7 +65,7 @@
                                 @foreach($users as $user)
                                     <tr class="text-center">
                                         <td>
-                                            <a href="#">
+                                            <a href="{{ route('admin.user.show', $user->id) }}">
                                                 <img
                                                     src="{{$user->thumbnail ? asset('users/' . $user->thumbnail) : asset('default.jpg')}}"
                                                     alt="{{$user->name}}"
