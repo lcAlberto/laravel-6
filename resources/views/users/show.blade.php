@@ -16,7 +16,7 @@
                     :errors="{{$errors}}"
                     :data="{{$user}}"
                     farm="{{$user->farm->name}}"
-                    :role="true"
+                    role="{{isAdmin($user)}}"
                     img-url="{{ $user->thumbnail ? asset('users/' . $user->thumbnail) : asset('default.jpg')}}">
                 </user-thumbnail-form>
             </div>
