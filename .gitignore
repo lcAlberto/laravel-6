@@ -5,6 +5,7 @@
 /public/css
 /public/mix-manifest.json
 /public/storage
+/public/users
 /storage/*.key
 /vendor
 /.idea

@@ -18,8 +18,6 @@ use App\Repositories\Criteria\User\UserRole;
 class UserController extends Controller
 {
     protected $repository;
-    protected $userInfoRepository;
-    protected $planRepository;
     protected $resource;
     private $perPage = 2;
 
@@ -33,7 +31,6 @@ class UserController extends Controller
     public function index()
     {
         $title = 'User Management';
-//        $users = $this->farmModel->users();
         $users = Farm::find(auth()->user()->id)->users;
 
         return view('users.index', compact('title', 'users'));
@@ -85,7 +82,8 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        $title = 'Perfil de ' . $user->name;
+        return view('users.show', compact('user','title'));
     }
 
     public function destroy(User $user)

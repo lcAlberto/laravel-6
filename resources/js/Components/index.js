@@ -23,6 +23,12 @@ Vue.component('register-form', require('./Forms/Auth/RegisterForm').default);
 Vue.component('farm-form', require('./Forms/FarmForm').default);
 Vue.component('user-form', require('./Forms/Users/UsersForm').default);
 
+/*Profile Forms*/
+Vue.component('user-data-form', require('./Forms/Profile/form/UserDataForm').default);
+Vue.component('user-password-form', require('./Forms/Profile/form/UserPasswordForm').default);
+Vue.component('user-thumbnail-form', require('./Forms/Profile/form/UserThumbnailForm').default);
+
+
 /*Extras*/
 Vue.component('validate-password', require('./Forms/extras/ValidatePassword').default);
 

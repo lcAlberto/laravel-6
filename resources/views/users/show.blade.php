@@ -1,81 +1,83 @@
 @extends('layouts.app')
 
-@section('breadcrumb')
-    <breadcrumb header="@lang('headings.View books details')">
-        <breadcrumb-item href="{{ route('home') }}">
-            @lang('headings._home')
-        </breadcrumb-item>
-
-        <breadcrumb-item active>
-            @lang('headings.users.show')
-        </breadcrumb-item>
-    </breadcrumb>
-@endsection
-
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="float-lg-left">
-                            <h1>@lang('headings.Details')</h1>
-                        </div>
-                        <div class="float-lg-right">
-                            <a href="{{ route('admin.user.index')}}" class="btn btn-primary">
-                                <i class="fa fa-arrow-left mr-2"></i>Voltar
-                            </a>
+    <layout-header
+        background-img="{{asset('img/cards/user.jpg')}}"
+        description="{{$description ?? ''}}"
+        title="{{ $title }}"
+        breadcrumb-header="Usuários"
+        breadcrumb-label="@lang('headings._home')">
+    </layout-header>
+    <div class="container-fluid mt--9 card-procriare">
+        <div class="row">
+            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+                <user-thumbnail-form
+                    :old='@json(old())'
+                    :errors="{{$errors}}"
+                    :data="{{$user}}"
+                    farm="{{$user->farm->name}}"
+                    role="{{isAdmin($user)}}"
+                    img-url="{{ $user->thumbnail ? asset('users/' . $user->thumbnail) : asset('default.jpg')}}">
+                </user-thumbnail-form>
+            </div>
+            <div class="col-xl-8 order-xl-1">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white border-0">
+                        <div class="row align-items-center">
+                            <h3 class="col-12 mb-0">{{$user->name }}</h3>
                         </div>
                     </div>
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <div class="col-12">
-                            <div class="col-md-6 col-sm-12 float-md-left">
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <img src="{{ asset('/default.jpg') }}" alt="img"
-                                             width="250" height="auto" class="img img-profile embed-responsive">
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-sm-12 float-right">
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <strong>ID: </strong>
-                                        {{ $user->id }}
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong>@lang('headings.users.name')</strong>
-                                        {{ $user->name }}
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong>@lang('headings.users.email')</strong>
-                                        {{ $user->email }}
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong> @lang('labels.created_at') </strong>
-                                        {{ $user->created_at }}
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="col-md-6 float-left">
-                            <a href="{{ URL::previous() }}" class="btn btn-block btn-primary">
-                                <i class="fa fa-arrow-left mr-1"></i> @lang('buttons.Back')</a>
-                        </div>
-                        <div class="col-md-6 float-right">
-                            <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-block btn-success">
-                                <i class="fa fa-pencil mr-1"></i> @lang('buttons.Edit')</a>
-                        </div>
+                        <form method="post" action="{{ route('profile.update', $user->id) }}" autocomplete="off">
+                            @csrf
+                            @method('put')
+
+                            <h6 class="heading-small text-muted mb-4">Dados Pessoais</h6>
+
+                            @if (session('status'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('status') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+
+                            <user-data-form
+                                :old='@json(old())'
+                                :errors="{{$errors}}"
+                                :data="{{$user}}">
+                            </user-data-form>
+
+                        </form>
+                        <hr class="my-4" />
+                        <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
+                            @csrf
+                            @method('put')
+
+                            <h6 class="heading-small text-muted mb-4">{{ __('Password') }}</h6>
+
+                            @if (session('password_status'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('password_status') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+
+                            <user-password-form
+                                :old='@json(old())'
+                                :errors="{{$errors}}"
+                                :data="{{$user}}">
+                            </user-password-form>
+
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+
+        @include('layouts.footers.auth')
     </div>
 @endsection

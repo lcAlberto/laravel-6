@@ -47,4 +47,15 @@ class UserRepository extends Repository
             return $data;
         }
     }
+
+    public function decodeBase64Thumbnail($data, $current)
+    {
+        $bin = explode( ',', $data['thumbnail']);
+        $output_file = $current->name . '.' . 'png';
+        $file = fopen( 'users/'  . $output_file, "wb");
+        fwrite($file, base64_decode($bin[1]));
+        fclose($file);
+       $data['thumbnail']  = $output_file;
+       return $data;
+    }
 }
