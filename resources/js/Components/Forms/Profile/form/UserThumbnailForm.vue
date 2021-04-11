@@ -4,8 +4,9 @@
       <div class="col-lg-3 order-lg-2">
         <div class="card-profile-image">
           <a href="#">
-            <img :src="imgUrl" class="rounded-circle">
+            <img :src="imgUrl" id="imgUpload" class="rounded-circle"  data-toggle="modal" data-target="#upload-modal">
           </a>
+          <image-profile-upload-modal></image-profile-upload-modal>
         </div>
       </div>
     </div>
@@ -47,6 +48,9 @@
 </template>
 
 <script>
+
+import ImageProfileUploadModal from "./uploadImage/ImageProfileUploadModal";
+
 export default {
   //axios.post('http://localhost:8000/profile/thumbnail', data)
 name: "UserThumbnailForm",
@@ -78,17 +82,6 @@ name: "UserThumbnailForm",
   data() {
     return {
       thumbnail: undefined,
-
-      dropzoneOptions: {
-        url: 'http://localhost:8000/admin/user',
-        method: "post",
-        uploadMultiple: false,
-        maxFiles:1,
-        acceptedFiles: 'image/png,image/gif,image/jpeg,image/webp',
-        thumbnailWidth: 400,
-        maxFilesize: 2,
-        dictDefaultMessage: "<i class='fa fa-upload mr-2'></i>Clique aqui ou arraste sua foto aqui"
-      }
     }
   },
   methods: {
@@ -107,16 +100,13 @@ name: "UserThumbnailForm",
   components: {
     // vueDropzone: vue2Dropzone,
     // VueMask,
+    ImageProfileUploadModal
   },
 }
 </script>
 
 <style scoped>
-/*.dz-details{*/
-/*  background-color: rgba(0,0,0,0.31) !important;*/
-/*}*/
-
-/*.dz-error-message{*/
-/*  background: linear-gradient(to bottom, rgba(0,0,0,0.31), rgba(81, 23, 23, 0.31)) !important;*/
-/*}*/
+.card-profile-image {
+  z-index: 100000 !important;
+}
 </style>

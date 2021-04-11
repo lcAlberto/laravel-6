@@ -27,10 +27,13 @@ Vue.component('user-form', require('./Forms/Users/UsersForm').default);
 Vue.component('user-data-form', require('./Forms/Profile/form/UserDataForm').default);
 Vue.component('user-password-form', require('./Forms/Profile/form/UserPasswordForm').default);
 Vue.component('user-thumbnail-form', require('./Forms/Profile/form/UserThumbnailForm').default);
+Vue.component('image-profile-upload', require('./Forms/Profile/form/uploadImage/ImageProfileUploadModal').default);
 
 
 /*Extras*/
 Vue.component('validate-password', require('./Forms/extras/ValidatePassword').default);
+Vue.component('editor-area', require('./editor/EditorArea').default);
+Vue.component('j-area-editor', require('./editor/jquery-editor/j-area-editor').default);
 
 /* Main */
 const app = new Vue(require('./App.vue').default);

@@ -12,6 +12,14 @@
   display: block;
 }
 
+.index-card-editor{
+  z-index: 100;
+  position: fixed;
+  margin-block-start: 30% !important;
+  margin-block-end: auto !important;
+  display: block;
+}
+
 @media (max-width: 766px) {
   .navbar-ṕrocriare{
 
