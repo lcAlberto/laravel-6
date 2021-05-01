@@ -1,6 +1,6 @@
 <nav
-    class="navbar navbar-top col-10 col-lg-12 navbar-expand-lg navbar-dark navbar-ṕrocriare position-fixed d-md-block d-none">
-    {{--style="background-color: rgba(0,0,0,0.5); box-shadow: 20px 10px 5px rgba(0,0,0,0.2) !important">--}}
+    class="navbar navbar-top col-10 col-lg-12 navbar-expand-lg navbar-dark navbar-ṕrocriare position-fixed d-md-block d-none"
+    style="background-color: rgba(0,0,0,0.5); box-shadow: 20px 10px 5px rgba(0,0,0,0.2) !important">
     <div class="container-fluid">
         <!-- Brand -->
         <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">
@@ -35,7 +35,7 @@
                         <div class="media-body ml-2 d-none d-lg-block">
                             <span
                                 class="mb-0 text-sm  font-weight-bold">
-                                @lang('labels.Hello')! {{ user_single_name() }}
+                                @lang('labels.Hello')! {{ auth()->user()->name }}
                             </span>
                         </div>
                     </div>
