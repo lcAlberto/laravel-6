@@ -70,3 +70,8 @@ Route::group(['prefix' => 'medicament'], function () {
     Route::post('/search', 'MedicamentController@search')->name('medicament.search');
     Route::get('/flyer/{id}', 'MedicamentController@loadFlyer')->name('medicament.loadFlyer');
 });
+
+Route::get('/editor', 'EditorController@editor')->name('editor');
+
+
+Route::get('/jquery/editor', 'EditorController@jqueryEditor')->name('jquery-editor');

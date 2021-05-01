@@ -97,6 +97,15 @@
                                 <a href="{{ route('health.index') }}" class="nav-link">
                                     <i class="fa fa-heartbeat mr-2"></i>Saúde e Tratamentos</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('editor') }}" class="nav-link">
+                                    <i class="fa fa-font mr-2"></i>Editor</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('jquery-editor') }}" class="nav-link">
+                                    <i class="fa fa-fonticons mr-2"></i>JQuery Editor</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
