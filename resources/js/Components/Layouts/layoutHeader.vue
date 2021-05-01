@@ -1,5 +1,5 @@
 <template>
-<div class="header pb-7 pt-2 pt-lg-7 d-fixed align-items-center procriare-header" :style="'background-image: url(' + backgroundImg + ')'">
+<div class="header pb-7 pt-2 pt-lg-7 d-fixed align-items-center mb-5 procriare-header" :style="'background-image: url(' + backgroundImg + ')'">
   <span class="mask bg-gradient-dark opacity-3"></span>
   <!-- Header container -->
   <div class="container-fluid d-flex align-items-center">
@@ -71,7 +71,7 @@ export default {
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  position: fixed !important;
+  /*position: fixed !important;*/
   height: 100%;
   width: 100%;
   z-index: -2;
