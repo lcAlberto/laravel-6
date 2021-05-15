@@ -15,10 +15,12 @@ class User extends JsonResource
     public function toArray($request)
     {
         return [
+            'thumbnail' => $this->thumbnail ? asset('users/' . $this->thumbnail) : asset('default.jpg'),
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
-            'created_at' => format_date($this->created_at, 'd/m/Y'),
+//            'created_at' => format_date($this->created_at, 'd/m/Y'),
+            'created_at' => $this->created_at,
 
             'links' => [
                 'edit' => $this->when(true, route('admin.user.edit', $this->id)),

@@ -3,6 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-3 order-lg-2">
         <div class="card-profile-image">
+          {{imgUrl}}
           <a href="#">
             <img :src="imgUrl" id="imgUpload" class="rounded-circle"  data-toggle="modal" data-target="#upload-modal">
           </a>

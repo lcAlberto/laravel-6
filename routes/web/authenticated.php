@@ -75,3 +75,13 @@ Route::get('/editor', 'EditorController@editor')->name('editor');
 
 
 Route::get('/jquery/editor', 'EditorController@jqueryEditor')->name('jquery-editor');
+
+
+Route::namespace('Admin')
+    ->name('admin.')
+    ->prefix('admin')
+    ->middleware('role:admin')
+    ->group(function (){
+//        Route::get('/farm', 'FarmController');
+        Route::get('/user/paginate', 'UserController@pagination');
+    });

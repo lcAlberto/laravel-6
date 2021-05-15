@@ -19,19 +19,20 @@ class UserController extends Controller
 {
     protected $repository;
     protected $resource;
-    private $perPage = 2;
+    private $perPage = 1;
 
     public function __construct()
     {
         $this->model = new User();
         $this->repository = new UserRepository();
-        $this->farmModel = new Farm();
+        $this->farm = new Farm();
     }
 
     public function index()
     {
         $title = 'User Management';
-        $users = Farm::find(auth()->user()->id)->users;
+        $users = $this->farm->find(auth()->user()->id)->users;
+        $users = $users->paginate($this->perPage);
 
         return view('users.index', compact('title', 'users'));
     }

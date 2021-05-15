@@ -8,9 +8,9 @@
         breadcrumb-header="Usuarios"
         breadcrumb-label="@lang('headings._home')">
     </layout-header>
-    <div class="container-fluid mt--7 index-card-procriare">
+    <div class="container-fluid index-card-procriare">
         <div class="row">
-            <div class="col">
+            <div class="col" style="margin-top: 27% !important;">
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -96,29 +96,30 @@
                         </div>
                     </div>
                     <div class="card-footer py-4 mt-8">
-                        <nav class="d-flex justify-content-end" aria-label="...">
-                            <ul class="pagination justify-content-end mb-0">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1">
-                                        <i class="fas fa-angle-left"></i>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">
-                                        <i class="fas fa-angle-right"></i>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                        {{ $users->links() }}fdghj
+{{--                        <nav class="d-flex justify-content-end" aria-label="...">--}}
+{{--                            <ul class="pagination justify-content-end mb-0">--}}
+{{--                                <li class="page-item disabled">--}}
+{{--                                    <a class="page-link" href="#" tabindex="-1">--}}
+{{--                                        <i class="fas fa-angle-left"></i>--}}
+{{--                                        <span class="sr-only">Previous</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="page-item active">--}}
+{{--                                    <a class="page-link" href="#">1</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="page-item">--}}
+{{--                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>--}}
+{{--                                </li>--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+{{--                                <li class="page-item">--}}
+{{--                                    <a class="page-link" href="#">--}}
+{{--                                        <i class="fas fa-angle-right"></i>--}}
+{{--                                        <span class="sr-only">Next</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </nav>--}}
                     </div>
                 </div>
             </div>

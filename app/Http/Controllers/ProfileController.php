@@ -22,7 +22,8 @@ class ProfileController extends Controller
     public function edit()
     {
         $title = 'Your Profile';
-        return view('profile.edit', compact('title'));
+        $description = 'Mantenha sempre atualizado seu perfil';
+        return view('profile.edit', compact('title', 'description'));
     }
 
     public function update(ProfileRequest $request)
