@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile/{id}', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile/{id}', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-    Route::post('profile/thumbnail', ['as' => 'profile.thumbnail', 'uses' => 'ProfileController@thumbnail']);
+    Route::post('/user-profile/{id}', 'ProfileController@thumbnail')->name('user.thumbnail');
 });
 
 /* animals // REBANHO */
@@ -83,5 +83,5 @@ Route::namespace('Admin')
     ->middleware('role:admin')
     ->group(function (){
 //        Route::get('/farm', 'FarmController');
-        Route::get('/user/paginate', 'UserController@pagination');
+//        Route::get('/user/paginate', 'UserController@pagination');
     });

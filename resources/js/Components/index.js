@@ -2,7 +2,7 @@
 require('./DataListFilters');
 
 /* Data lists */
-Vue.component('data-list', require('./DataList.vue').default);
+Vue.component('data-list', require('./Datalists/MainDatalist.vue').default);
 
 /* Breadcrumb */
 Vue.component('breadcrumb', require('./Breadcrumb.vue').default);

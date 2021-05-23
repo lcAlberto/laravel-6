@@ -3,11 +3,17 @@
     <div class="row justify-content-center">
       <div class="col-lg-3 order-lg-2">
         <div class="card-profile-image">
-          {{imgUrl}}
           <a href="#">
-            <img :src="imgUrl" id="imgUpload" class="rounded-circle"  data-toggle="modal" data-target="#upload-modal">
+            <img
+                :src="imgUrl"
+                 id="imgUpload"
+                 class="rounded-circle"
+                 data-toggle="modal"
+                 data-target="#upload-modal">
           </a>
-          <image-profile-upload-modal></image-profile-upload-modal>
+          <image-profile-upload-modal
+            :data="data">
+          </image-profile-upload-modal>
         </div>
       </div>
     </div>
@@ -53,7 +59,6 @@
 import ImageProfileUploadModal from "./uploadImage/ImageProfileUploadModal";
 
 export default {
-  //axios.post('http://localhost:8000/profile/thumbnail', data)
 name: "UserThumbnailForm",
   props: {
     old: {
@@ -80,6 +85,7 @@ name: "UserThumbnailForm",
       default: 'Não está alocado á nenhuma fazenda'
     },
   },
+
   data() {
     return {
       thumbnail: undefined,
@@ -99,15 +105,11 @@ name: "UserThumbnailForm",
     },
   },
   components: {
-    // vueDropzone: vue2Dropzone,
-    // VueMask,
     ImageProfileUploadModal
   },
 }
 </script>
 
 <style scoped>
-.card-profile-image {
-  z-index: 100000 !important;
-}
+
 </style>

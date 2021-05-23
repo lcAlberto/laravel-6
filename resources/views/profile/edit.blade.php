@@ -10,7 +10,7 @@
     </layout-header>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0" style="margin-top: 27% !important;">
+            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0" style="margin-top: 30% !important;">
                 <user-thumbnail-form
                     :old='@json(old())'
                     :errors="{{$errors}}"
@@ -20,7 +20,7 @@
                     img-url="{{asset('users/' . current_user()->thumbnail)}}">
                 </user-thumbnail-form>
             </div>
-            <div class="col-xl-8 order-xl-1" style="margin-top: 27% !important;">
+            <div class="col-xl-8 order-xl-1" style="margin-top: 30% !important;">
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
@@ -75,9 +75,8 @@
                         </form>
                     </div>
                 </div>
+                @include('layouts.footers.auth')
             </div>
         </div>
-        
-        @include('layouts.footers.auth')
     </div>
 @endsection

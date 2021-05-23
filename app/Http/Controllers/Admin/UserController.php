@@ -8,6 +8,7 @@ use App\Http\Requests\UserRequest;
 use App\Http\Resources\User as UserResource;
 use App\Models\Farm;
 use App\Models\User;
+use App\Repositories\Criteria\Common\Where;
 use App\Repositories\FarmRepository;
 use App\Repositories\UserRepository;
 use App\Support\PaginationBuilder;
@@ -19,7 +20,7 @@ class UserController extends Controller
 {
     protected $repository;
     protected $resource;
-    private $perPage = 1;
+    private $perPage = 2;
 
     public function __construct()
     {
@@ -31,10 +32,7 @@ class UserController extends Controller
     public function index()
     {
         $title = 'User Management';
-        $users = $this->farm->find(auth()->user()->id)->users;
-        $users = $users->paginate($this->perPage);
-
-        return view('users.index', compact('title', 'users'));
+        return view('users.index', compact('title'));
     }
 
     public function create()
@@ -84,7 +82,8 @@ class UserController extends Controller
     public function show(User $user)
     {
         $title = 'Perfil de ' . $user->name;
-        return view('users.show', compact('user','title'));
+        $description = 'Detalhes da conta';
+        return view('users.show', compact('user','title', 'description'));
     }
 
     public function destroy(User $user)
@@ -101,9 +100,9 @@ class UserController extends Controller
     public function pagination()
     {
         $pagination = new PaginationBuilder();
-        return pagination()
+        return $pagination
             ->repository($this->repository)
-            ->resource(UserResource::class)
-            ->perPage($this->perPage);
+            ->criteria([  new Where('farm_id', current_user()->farm_id)])
+            ->resource(UserResource::class);
     }
 }

@@ -22,6 +22,7 @@ Vue.config.productionTip = false
 export default {
   el: '#app',
   components: {
-    Datepicker
+    Datepicker,
+    Snotify,
   }
 }
