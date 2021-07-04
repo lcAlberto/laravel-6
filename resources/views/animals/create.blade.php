@@ -2,10 +2,10 @@
 
 @section('content')
     <layout-header
-        background-img="{{asset('img/cards/user.jpg')}}"
+        background-img="{{asset('img/cards/cows-954002_19220.jpg')}}"
         description="{{$description}}"
         title="@lang("labels.$title")"
-        breadcrumb-header="Criar Fazenda"
+        breadcrumb-header="Registrar novo animal"
         breadcrumb-label="@lang('headings._home')">
     </layout-header>
     <div class="container-fluid card-procriare">
@@ -16,10 +16,10 @@
                         <div class="row align-items-center">
                             <div class="col-sm-12">
                                 <div class="col-md-9 float-left">
-                                    <h3>@lang('headings.users.create')</h3>
+                                    <h3>@lang('headings.animals.create')</h3>
                                 </div>
                                 <div class="col-md-3 float-right">
-                                    <a href="{{route('admin.user.index')}}" class="btn btn-block btn-primary">
+                                    <a href="{{route('animals.index')}}" class="btn btn-block btn-primary">
                                         <i class="fa fa-arrow-left mr-2"></i>Voltar
                                     </a>
                                 </div>
@@ -28,12 +28,12 @@
                                 <div class="col-md-12">
                                     <div class="d-flex flex-column align-items-center">
                                         <div class="col-12">
-                                            <form class="form-horizontal p-0" method="POST" action="{{ route('admin.user.store') }}" enctype="multipart/form-data">
+                                            <form class="form-horizontal p-0" method="POST" action="{{ route('animals.store') }}" enctype="multipart/form-data">
                                                 @csrf
-                                                <user-form
+                                                <animal-form
                                                 :old='@json(old())'
                                                 :errors="{{$errors}}">
-                                                </user-form>
+                                                </animal-form>
                                                 <div class="form-group col-sm-12 col-md-6">
                                                     <button class="btn btn-block btn-primary" type="submit">
                                                         <i class="fa fa-check"></i> @lang('links._create')

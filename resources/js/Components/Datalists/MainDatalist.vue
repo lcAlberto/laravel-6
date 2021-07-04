@@ -2,7 +2,6 @@
 import SearchItem from "./SearchItem";
 import UserTable from "./Tables/UserTable/UserTable";
 import SortIcon from "./SortIcon";
-import Snotify from "vue-snotify";
 
 export default {
   name: "MainDatalist",
@@ -246,8 +245,8 @@ export default {
         buttons: [
           {text: 'Yes', action: () => console.log('Clicked: Yes'), bold: false},
           {text: 'No', action: () => console.log('Clicked: No')},
-          {text: 'Later', action: (toast) => {console.log('Clicked: Later'); vm.$snotify.remove(toast.id); } },
-          {text: 'Close', action: (toast) => {console.log('Clicked: No'); vm.$snotify.remove(toast.id); }, bold: true},
+          // {text: 'Later', action: (toast) => {console.log('Clicked: Later'); vm.$snotify.remove(toast.id); } },
+          // {text: 'Close', action: (toast) => {console.log('Clicked: No'); vm.$snotify.remove(toast.id); }, bold: true},
         ]
       })
     },
@@ -301,8 +300,8 @@ export default {
   },
 
   components: {
-    UserTable
-  }
+    UserTable,
+  },
 }
 </script>
 

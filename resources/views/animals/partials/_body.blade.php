@@ -1,5 +1,5 @@
 <td>
-    <a :href="'/admin/user/' + item.id">
+    <a :href="'/animal/' + item.id">
         <img
            :src="item.thumbnail"
            alt="image"
