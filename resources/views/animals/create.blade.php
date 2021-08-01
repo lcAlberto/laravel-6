@@ -2,15 +2,15 @@
 
 @section('content')
     <layout-header
-        background-img="{{asset('img/cards/cows-954002_19220.jpg')}}"
-        description="{{$description}}"
-        title="@lang("labels.$title")"
-        breadcrumb-header="Registrar novo animal"
-        breadcrumb-label="@lang('headings._home')">
+            background-img="{{asset('img/cards/cows-954002_19220.jpg')}}"
+            description="{{$description}}"
+            title="@lang("titles.animal.$title")"
+            breadcrumb-header="Registrar novo animal"
+            breadcrumb-label="@lang('headings._home')">
     </layout-header>
     <div class="container-fluid card-procriare">
         <div class="row">
-            <div class="col" style="margin-top: 25%">
+            <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -28,12 +28,20 @@
                                 <div class="col-md-12">
                                     <div class="d-flex flex-column align-items-center">
                                         <div class="col-12">
-                                            <form class="form-horizontal p-0" method="POST" action="{{ route('animals.store') }}" enctype="multipart/form-data">
+                                            <form class="form-horizontal p-0" method="POST"
+                                                  action="{{ route('animals.store') }}" enctype="multipart/form-data">
                                                 @csrf
-                                                <animal-form
-                                                :old='@json(old())'
-                                                :errors="{{$errors}}">
-                                                </animal-form>
+                                                <div class="bg-success">
+                                                    <animal-form
+                                                            :old="@json(old())"
+                                                            :errors="{{$errors}}"
+                                                            :mothers="{{$mothers}}"
+                                                            :fathers="{{$fathers}}"
+                                                            :situation="{{$situation}}"
+                                                            today="{{today()}}"
+                                                            :production="{{$production}}">
+                                                    </animal-form>
+                                                </div>
                                                 <div class="form-group col-sm-12 col-md-6">
                                                     <button class="btn btn-block btn-primary" type="submit">
                                                         <i class="fa fa-check"></i> @lang('links._create')

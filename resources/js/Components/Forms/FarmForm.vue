@@ -109,7 +109,7 @@ export default {
               }
             }
           }).catch((error) => {
-          alert('CEP não encontrado!')
+          console.log('CEP não encontrado!')
         })
       }
     },

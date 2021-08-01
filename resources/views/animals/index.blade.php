@@ -1,10 +1,10 @@
-@extends('layouts.app', ['title' => __('User Management')])
+@extends('layouts.app')
 
 @section('content')
     <layout-header
             background-img="{{asset('img/cards/agricultura-animal-area-4222118.jpg')}}"
             description="Cuide de suas mimosas"
-            title="@lang("labels.$title")"
+            title="@lang("titles.animal.$title")"
             breadcrumb-header="Rebanho"
             breadcrumb-label="@lang('headings._home')">
     </layout-header>
@@ -19,7 +19,7 @@
 
         <template id="main-data-list" slot-scope="modelScope">
             <div class="row">
-                <div class="col">
+                <div class="col" style="margin-top: 0 !important;">
                     <div class="card shadow">
                         <div class="card-header border-0 pt-1 pb-0">
                             <div class="row align-items-center">
@@ -40,8 +40,7 @@
                             <div class="justify-content-center col-12">
                                 <table class="table">
                                     <thead class="thead-light">
-                                    <td>sdfg</td>
-{{--                                    @include('users.partials._head')--}}
+                                    @include('animals.partials._head')
                                     </thead>
                                     <tbody class="list">
                                     <tr v-if="emptyResult">
@@ -50,8 +49,7 @@
                                         </td>
                                     </tr>
                                     <tr v-else class="text-center" v-for="item in items" :key="item.id">
-{{--                                        @include('users.partials._body')--}}
-                                        <td>@{{ item }}</td>
+                                        @include('animals.partials._body')
                                     </tr>
                                     </tbody>
 

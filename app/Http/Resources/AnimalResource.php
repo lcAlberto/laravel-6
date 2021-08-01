@@ -18,10 +18,10 @@ class AnimalResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'code' => $this->code,
-            'born_date' => $this->born_date,
-            'age_classification' => $this->age_classification,
+            'born_date' => format_date($this->born_date, 'd/m/Y'),
+            'age_classification' => __('labels.animal.age_classification.' . $this->age_classification),
             'sex' => $this->sex,
-            'production_classification' => $this->production_classification,
+            'production_classification' => __('labels.animal.production_classification.' . $this->production_classification),
             'breed' => $this->breed,
             'thumbnail' => $this->thumbnail,
             'mother_id' => $this->mother_id,
@@ -30,9 +30,9 @@ class AnimalResource extends JsonResource
             'created_at' => format_date($this->created_at, 'd/m/Y'),
 
             'links' => [
-                'edit' => $this->when(true, route('animal.edit', $this->id)),
-                'show' => $this->when(true, route('animal.show', $this->id)),
-                'destroy' => $this->when(true, route('animal.destroy', $this->id)),
+                'edit' => $this->when(true, route('animals.edit', $this->id)),
+                'show' => $this->when(true, route('animals.show', $this->id)),
+                'destroy' => $this->when(true, route('animals.destroy', $this->id)),
             ],
         ];
     }

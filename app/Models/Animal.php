@@ -9,7 +9,7 @@ class Animal extends Model
     protected $fillable = [
         'code', 'name', 'born_date', 'age_classification', 'sex',
         'production_classification', 'breed', 'thumbnail',
-        'mother_id', 'farm_id', 'responsible_id',
+        'mother_id', 'father_id', 'farm_id', 'responsible_id',
     ];
 
     protected $dates = ['deleted_at'];

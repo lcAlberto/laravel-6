@@ -10,7 +10,7 @@
     </layout-header>
     <div class="container-fluid card-procriare">
         <div class="row">
-            <div class="col" style="margin-top: 30%">
+            <div class="col">
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">

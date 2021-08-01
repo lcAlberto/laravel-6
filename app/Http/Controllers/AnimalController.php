@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\AnimalResource;
 use App\Models\Animal;
+use App\Models\Shared\Breeds;
 use App\Repositories\AnimalRepository;
+use App\Repositories\Criteria\Common\Where;
 use App\Support\PaginationBuilder;
 use Illuminate\Http\Request;
 
@@ -23,15 +25,20 @@ class AnimalController extends Controller
 
     public function index()
     {
-        $title = 'herd management';//manejo de rebanho
+        $title = 'index';//manejo de rebanho
         return view('animals.index', compact('title'));
     }
 
     public function create()
     {
-        $title = 'New animal';
+        $title = 'create';
+        $situation = $this->repository->getStatusSituation();
+        $production = $this->repository->productionClassification();
+        $mothers = $this->repository->getMothers();
+        $fathers = $this->repository->getFathers();
         $description = 'Cadastre o animal com os dados a baixo';
-        return view('animals.create', compact('title', 'description'));
+        return view('animals.create',
+            compact('title', 'description', 'situation', 'production', 'mothers', 'fathers'));
     }
 
     /**
@@ -90,13 +97,18 @@ class AnimalController extends Controller
         //
     }
 
+    public function getBreeds()
+    {
+        $breds = Breeds::all();
+        return response()->json($breds);
+    }
+
     public function pagination()
     {
-        dd('pagination');
         $pagination = new PaginationBuilder();
         return $pagination
             ->repository($this->repository)
-            ->criteria([  new Where('farm_id', current_user()->farm_id)])
+            ->criteria(new Where('farm_id', current_user()->farm_id))
             ->resource(AnimalResource::class);
     }
 }

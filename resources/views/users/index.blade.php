@@ -19,7 +19,7 @@
 
         <template id="main-data-list" slot-scope="modelScope">
             <div class="row">
-                <div class="col">
+                <div class="col" style="margin-top: 0 !important;">
                     <div class="card shadow">
                         <div class="card-header border-0 pt-1 pb-0">
                             <div class="row align-items-center">

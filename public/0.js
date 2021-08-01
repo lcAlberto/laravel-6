@@ -210,6 +210,14 @@ __webpack_require__.r(__webpack_exports__);
       farm_id: '',
       responsible_id: ''
     };
+  },
+  mounted: function mounted() {
+    console.log('eeee');
+  },
+  methods: {
+    hasErrors: function hasErrors(field) {
+      return this.errors.field ? 'has-error' : '';
+    }
   }
 });
 
@@ -286,7 +294,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n        Código válido com no máximo 255 caracteres\n      "
+                    "\n        Código válido com no máximo 20 caracteres\n      "
                   )
                 ]
               )

@@ -4,7 +4,7 @@
     <layout-header
         background-img="{{current_user()->thumbnail ? asset('users/' . current_user()->thumbnail) : asset('img/cards/profile-img-default.jpg')}}"
         description="{{$description ?? ''}}"
-        title="@lang("labels.$title")"
+        title="@lang("titles.titles.$title")"
         breadcrumb-header="Criar Fazenda"
         breadcrumb-label="@lang('headings._home')">
     </layout-header>

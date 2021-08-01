@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* animals // REBANHO */
     Route::resource('/animals', 'AnimalController');
+    Route::get('/get-breeds/', 'AnimalController@getBreeds');
 });
 
 /* animals // REBANHO

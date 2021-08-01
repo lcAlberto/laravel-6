@@ -1,6 +1,3 @@
-/* Data list filters */
-// require('./DataListFilters');
-
 /* Data lists */
 Vue.component('data-list', require('./Datalists/MainDatalist.vue').default);
 
@@ -30,7 +27,7 @@ Vue.component('user-thumbnail-form', require('./Forms/Profile/form/UserThumbnail
 Vue.component('image-profile-upload', require('./Forms/Profile/form/uploadImage/ImageProfileUploadModal').default);
 
 /*Animal*/
-Vue.component('animal-form', () => import('./Forms/Animals/AnimalForm').default);
+Vue.component('animal-form', require('./Forms/Animals/AnimalForm').default);
 
 
 /*Extras*/

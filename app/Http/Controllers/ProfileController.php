@@ -15,7 +15,6 @@ class ProfileController extends Controller
 
     public function __construct()
     {
-//        $this->model = new User();
         $this->repository = new UserRepository();
     }
 

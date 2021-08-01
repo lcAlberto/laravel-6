@@ -25,6 +25,7 @@ class CreateAnimalsTable extends Migration
             $table->enum('age_classification', AnimalAgeClassificationEnum::getConstantsValues());
             $table->enum('sex', AnimalSexEnum::getConstantsValues());
             $table->enum('production_classification', AnimalProductionStatus::getConstantsValues());
+            $table->enum('situation_status', \App\Enums\Animals\AnimalSituationStatus::getConstantsValues());
             $table->string('breed');
 
             $table->string('thumbnail');

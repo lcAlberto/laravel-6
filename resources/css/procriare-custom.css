@@ -15,7 +15,7 @@
 .index-card-editor{
   z-index: 100;
   position: relative;
-  margin-block-start: 30% !important;
+  margin-block-start: 20% !important;
   margin-block-end: auto !important;
   display: block;
 }

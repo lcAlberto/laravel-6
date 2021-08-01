@@ -7,9 +7,13 @@
            data-toggle="tooltip" data-placement="top">
     </a>
 </td>
-<td>@{{item.name}}</td>
-<td>@{{item.email}}</td>
-<td>@{{item.phone ? item.phone : '-'}}</td>
+<td>@{{item.name}} - [@{{ item.code }}]</td>
+<td>@{{item.born_date}}</td>
+<td>@{{item.age_classification}}</td>
+<td>
+    <i :class="item.sex === 'femeale' ? 'fa fa-venus text-danger' : 'fa fa-mars text-primary'"></i>
+</td>
+<td>@{{item.production_classification}}</td>
 <td>@{{ formatDate(item.created_at) }}</td>
 <td>
     <div class="btn-group">
