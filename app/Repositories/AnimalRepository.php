@@ -8,6 +8,7 @@ use App\Enums\Animals\AnimalProductionStatus;
 use App\Enums\Animals\AnimalSituationStatus;
 use App\Models\Animal;
 use App\Repositories\Criteria\Common\Where;
+use App\Services\Animal\CalculeAnimalAge;
 
 class AnimalRepository extends Repository
 {
@@ -90,5 +91,11 @@ class AnimalRepository extends Repository
                 'value' => AnimalProductionStatus::BULL_CASTRATED
             ],
         ]);
+    }
+
+    public function createAnimal($data)
+    {
+        $data = (new CalculeAnimalAge())->calculeAge($data);
+        return $data;
     }
 }

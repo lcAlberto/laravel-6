@@ -18,6 +18,7 @@
 
             <div id="my-strictly-unique-vue-upload-multiple-image" style="display: flex; justify-content: center;">
               <vue-upload-multiple-image
+                  v-if="!enableCrop"
                   @upload-success="uploadImageSuccess"
                   @before-remove="beforeRemove"
                   @edit-image="editImage"
@@ -33,6 +34,17 @@
                   :showPrimary="false"
                   :showAdd="false">
               </vue-upload-multiple-image>
+              <cropper
+                  v-if="enableCrop"
+                  ref="cropper"
+                  class="cropper"
+                  :src="thumbnail.path"
+                  :stencil-props="{
+                    aspectRatio: 30/30
+                   }"
+                  @change="cropedImage"
+              />
+
             </div>
 
           </div>
@@ -50,6 +62,7 @@
 
 <script>
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
+import { Cropper } from 'vue-advanced-cropper'
 
 export default {
   name: "upload-image-modal",
@@ -65,6 +78,9 @@ export default {
       dataImage: [],
       thumbnail: '',
       failResponse: false,
+
+      enableCrop: false,
+      cropedThumbnail: undefined,
     }
   },
 
@@ -85,6 +101,16 @@ export default {
       this.thumbnail = fileList[0].path
     },
 
+    cropedImage({ coordinates, canvas}) {
+      this.cropedThumbnail = this.$refs.cropper.getResult();
+    },
+
+    cropedSuccess() {
+      this.thumbnail.path = this.cropedThumbnail.image.src;
+      this.enableCrop = false;
+      this.submitForm();
+    },
+
     submitForm() {
       this.$root.$emit('uploaded-image', this.thumbnail);
       $('#upload-modal').modal('hide');
@@ -92,11 +118,11 @@ export default {
   },
 
   components: {
-    VueUploadMultipleImage,
+    VueUploadMultipleImage, Cropper
   },
 }
 </script>
 
 <style scoped>
-
+@import '~vue-advanced-cropper/dist/style.css';
 </style>

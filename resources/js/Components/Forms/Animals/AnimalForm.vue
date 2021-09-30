@@ -28,11 +28,6 @@
       <div class="form-group">
         <label for="name" class="float-left">Nome: </label>
         <div class="input-group" :class="hasErrors('name')">
-          <div class="input-group-prepend">
-          <span class="input-group-text">
-            <i class="fa fa-user"></i>
-          </span>
-          </div>
           <input
               type="text"
               name="name"
@@ -75,6 +70,7 @@
         <div class="input-group" :class="hasErrors('breed')">
           <multiselect
               v-model="breed"
+              name="breed"
               :searchable="true"
               :close-on-select="true"
               :show-labels="false"
@@ -128,6 +124,7 @@
         <div class="input-group" :class="hasErrors('mother_id')">
           <multiselect
               v-model="mother"
+              name="mother_id"
               :searchable="true"
               :close-on-select="true"
               :show-labels="false"
@@ -155,6 +152,7 @@
         <div class="input-group" :class="hasErrors('father_id')">
           <multiselect
               v-model="father"
+              name="father_id"
               :searchable="true"
               :close-on-select="true"
               :show-labels="false"
@@ -182,6 +180,7 @@
         <div class="input-group" :class="hasErrors('situation_status')">
           <multiselect
               v-model="animalSituation"
+              name="situation_status"
               :searchable="true"
               :close-on-select="true"
               :show-labels="false"
@@ -209,6 +208,7 @@
         <div class="input-group" :class="hasErrors('situation_status')">
           <multiselect
               v-model="animalProduction"
+              name="situation_status"
               :searchable="true"
               :close-on-select="true"
               :show-labels="false"

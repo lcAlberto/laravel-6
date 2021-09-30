@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AnimalRequest;
 use App\Http\Resources\AnimalResource;
 use App\Models\Animal;
 use App\Models\Shared\Breeds;
@@ -47,9 +48,12 @@ class AnimalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnimalRequest $request, AnimalRepository $repository)
     {
-        //
+        $data = $request->validated();
+        $data = $repository->createAnimal($data);
+
+
     }
 
     /**
