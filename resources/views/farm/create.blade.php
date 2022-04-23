@@ -8,7 +8,7 @@
         breadcrumb-header="Criar Fazenda"
         breadcrumb-label="@lang('headings._home')">
     </layout-header>
-    <div class="container-fluid mt--7 card-procriare">
+    <div class="container-fluid card-procriare">
         <div class="row">
             <div class="col">
                 <div class="card shadow">

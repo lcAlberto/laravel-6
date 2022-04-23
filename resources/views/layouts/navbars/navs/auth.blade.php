@@ -35,7 +35,7 @@
                         <div class="media-body ml-2 d-none d-lg-block">
                             <span
                                 class="mb-0 text-sm  font-weight-bold">
-                                @lang('labels.Hello')! {{ auth()->user()->name }}
+                                @lang('labels.Hello')! {{ current_user()->name }}
                             </span>
                         </div>
                     </div>

@@ -4,6 +4,8 @@
  * Descrições com nome genérico devem começar com underline.
  */
 
+use App\Enums\Animals\AnimalSituationStatus;
+
 return [
     'Logout' => 'Sair',
 
@@ -55,7 +57,6 @@ return [
     'Delete' => 'Deletar',
     'Details' => 'Detalhes',
     'Save' => 'Salvar',
-    'Search' => 'Pesquisar',
     'search' => 'pesquisar',
     'Total flock' => 'Rebanho Total',
     'Events' => 'Eventos',
@@ -64,14 +65,6 @@ return [
     'reproductive-cycle', 'ciclo reprodutivo',
     'Reproductive-Cycle', 'Ciclo Reprodutivo',
     'Create' => 'Criar',
-
-    //Title
-
-    'Farm Create' => 'Cadastrar Fazenda',
-
-//    'Edit Profile' => 'Editar Perfil',
-    'User Information' => 'Informaçao do Usuario',
-    'Your Profile' => 'Seu Perfil',
 
     //Attributes
     'ID' => 'ID',
@@ -90,7 +83,7 @@ return [
     'Change password' => 'Alterar Senha',
     'Activity' => 'Atividade',
     'Settings' => 'Configuraçoes',
-    'flock' => 'Rebanho',
+    '_flock' => 'Rebanho',
     'Cow' => 'Vaca',
     'Cows' => 'Vacas',
     'Total' => 'Total',
@@ -126,42 +119,48 @@ return [
     //Session
     'Hello' => 'Ola',
     'LogOut' => 'Sair',
-    'Logout' => 'Sair',
     'Login' => 'Entrar',
     'Register' => 'Registrar-se',
     'profile' => 'Perfil',
 
-
-    //Titles
-
     //users
-    'Here you can manage the people who help you in caring for your herd and who will have access to the system'
-    => 'Aqui você pode gerenciar as pessoas que te ajudam no cuidado com seu rebanho e que terão acesso ao sistema',
     'Create new user' => 'Criar novo usuário',
     'Edit this user' => 'Edite este usuário',
 
+    'animal' => [
+        'Create new Animal' => 'Cadastrar um novo animal',
+        'Edit this animal' => 'Editar animal',
+        'Details of this animal' => 'Detalhes do Animal',
 
+        'situation' => [
+            AnimalSituationStatus::ALIVE => 'Vivo',
+            AnimalSituationStatus::DEAD => 'Morto',
+            AnimalSituationStatus::SOLD => 'Vendido',
+            AnimalSituationStatus::SLAUGHTERED => 'Abatido',
+        ],
 
-    //flock
-    'flock Managment' => 'Gerenciamento do Rebanho',
-    'Manage your animals here. This is your whole herd' =>
-        'Gerencie seus animais aqui. Este é todo o seu rebanho',
-
-    'Create new Animal' => 'Cadastrar um novo animal',
-    'Check all fields providing the necessary data' =>
-        'Edite este animal. Verifique todos os campos fornecendo os dados necessários',
-    'Edit this animal' => 'Editar animal',
-
-    'Details of this animal' => 'Detalhes do Animal',
-    'Follow the reproductive cycle of the herd' => 'Acompanhar ciclo reprodutivo',
+        'age_classification' => [
+            \App\Enums\Animals\AnimalAgeClassificationEnum::ADULT_COW => 'Fêmea adulta',
+            \App\Enums\Animals\AnimalAgeClassificationEnum::HEIFER => 'Novilha',
+            \App\Enums\Animals\AnimalAgeClassificationEnum::BABY_COW => 'Bezerra',
+            \App\Enums\Animals\AnimalAgeClassificationEnum::BABY_BULL => 'Bezerro',
+            \App\Enums\Animals\AnimalAgeClassificationEnum::REPRODUCTIVE_BULL => 'Touro',
+        ],
+        'production_classification' => [
+            \App\Enums\Animals\AnimalProductionStatus::LACTATING => 'Lactante',
+            \App\Enums\Animals\AnimalProductionStatus::BULL_CASTRATED => 'Touro castrado',
+            \App\Enums\Animals\AnimalProductionStatus::BULL_REPRODUCTIVE => 'Touro',
+            \App\Enums\Animals\AnimalProductionStatus::DRY => 'Seca',
+            \App\Enums\Animals\AnimalProductionStatus::NO_LACTATING => 'Não lactante',
+            \App\Enums\Animals\AnimalProductionStatus::PREGNANT => 'Prenha',
+            \App\Enums\Animals\AnimalProductionStatus::BULL_RUFFIAN => 'Touro rufião',
+        ],
+    ],
 
 
     //cios
     'Reproductive cycle management' => 'Gerenciamento do ciclo reprodutivo',
     'Reproductive cycle per animal' => 'Ciclo reprodutivo por animal',
-
-    'Here you manage the entire reproductive cycle of each animal' =>
-        'Aqui você gerencia todo o ciclo reprodutivo de cada animal',
 
     'Edit this reproductive cycle' =>'Editar este ciclo reprodutivo',
     'Register a new reproductive cycle' =>'Cadastrar novo ciclo reprodutivo',
@@ -177,10 +176,6 @@ return [
     'Medicaments' => 'Medicamentos',
     'Medicaments details' => 'Detalhe do medicamento',
     'Here you can keep your entire veterinary pharmacy' => 'Aqui você pode manter toda a sua farmácia veterinária',
-
-
-
-
 
     //Enuns
     'cow-lactating' => 'Vaca Lactante',

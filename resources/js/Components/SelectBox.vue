@@ -129,16 +129,16 @@ export default {
 
         setAllOptions() {
             this.all_options = Object.values(this.options).sort((a, b) => {
-                let first = a[this.label].toLowerCase();
-                let second = b[this.label].toLowerCase();
-
-                if (first > second) {
-                    return 1;
-                }
-
-                if (first < second) {
-                    return -1;
-                }
+                // let first = a[this.label].toLowerCase();
+                // let second = b[this.label].toLowerCase();
+                //
+                // if (first > second) {
+                //     return 1;
+                // }
+                //
+                // if (first < second) {
+                //     return -1;
+                // }
 
                 return 0;
             });
@@ -161,9 +161,9 @@ export default {
                 return;
             }
 
-            query = query.toLowerCase();
+            // query = query.toLowerCase();
             this.data_options = this.all_options.filter((el) => {
-                return el[this.label].toLowerCase().search(query) != -1;
+                return el[this.label].search(query) !== -1;
             });
         },
     },

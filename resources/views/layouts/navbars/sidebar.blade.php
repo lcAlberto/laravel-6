@@ -1,6 +1,6 @@
 <nav
-    class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white"
-    id="sidenav-main" style="z-index: 200">
+        class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white"
+        id="sidenav-main" style="z-index: 200">
     <div class="container-fluid">
         <!-- Toggler -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main"
@@ -18,7 +18,7 @@
                    aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image" src="{{asset('/profile/'.auth()->user()->thumbnail) }}">
+                            <img alt="Image" src="{{asset('users/' . current_user()->thumbnail)}}">
                         </span>
                     </div>
                 </a>
@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('argon') }}/img/brand/11223.png">
+                            <img src="{{ asset('/img/11223.png') }}" alt="logo">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -80,7 +80,7 @@
                     <a class="nav-link" href="#navbar-flock" data-toggle="collapse" role="button"
                        aria-expanded="true" aria-controls="navbar-examples">
                         <i class="fa fa-paste"></i>
-                        <span class="nav-link-text">@lang('labels.flock')</span>
+                        <span class="nav-link-text">@lang('labels._flock')</span>
                     </a>
                     <div class="collapse show" id="navbar-flock">
                         <ul class="nav nav-sm flex-column">

@@ -28,7 +28,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'user@email.com',
             'password' => Hash::make('123456'),
             'phone' => '(42)99999-9999',
-            'email_verified_at' => '2019-11-23 01:01:01'
+            'email_verified_at' => '2019-11-23 01:01:01',
+            'thumbnail' => 'default.jpg',
         ]);
 
         $user->save();
@@ -50,6 +51,7 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('123456'),
             'phone' => '(42)99999-9999',
             'email_verified_at' => '2019-11-23 01:01:01',
+            'thumbnail' => 'default.jpg'
         ]);
 
         $user->save();

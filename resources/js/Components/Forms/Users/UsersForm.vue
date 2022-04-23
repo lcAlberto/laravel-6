@@ -175,18 +175,17 @@ export default {
 
   data() {
     return {
-      name: undefined,
-      email: undefined,
-      phone: undefined,
-      password: undefined,
-      confirmPassword: undefined,
+      name: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
       thumbnail: '',
     }
   },
 
   created() {
     this.setFormData();
-    console.log(this.data)
   },
 
   methods: {
